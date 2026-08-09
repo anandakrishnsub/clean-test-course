@@ -5,7 +5,17 @@ on:
     branches:
       - lesson-5
 jobs:
+  security_test:
+    runs_on: ubuntu-latest
+    defaults:
+      run: 
+        working-directory: backend
+  name: Execute the pycharm security test
+    steps: 
+      - uses: actions/checkout@v4
+    
   build_and_test:
+    needs: [security_test]
     runs-on: ubuntu-latest
     defaults:
       run:
